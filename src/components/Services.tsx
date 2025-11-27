@@ -3,47 +3,21 @@ import { Film, Megaphone, Sparkles, Video, Briefcase } from "lucide-react";
 
 const Services = () => {
   const services = [
-    {
-      icon: Film,
-      title: "Reels Editing",
-      description: "Short, punchy edits optimized for attention and watch time.",
-      color: "text-primary",
-    },
-    {
-      icon: Megaphone,
-      title: "Ad Videos",
-      description: "Conversion-focused edits for paid campaigns and social ads.",
-      color: "text-secondary",
-    },
-    {
-      icon: Sparkles,
-      title: "UI Animation",
-      description: "Smooth interface animations to showcase apps and digital products.",
-      color: "text-highlight",
-    },
-    {
-      icon: Video,
-      title: "YouTube Editing",
-      description: "Clean, engaging edits for long-form and short-form YouTube content.",
-      color: "text-primary",
-    },
-    {
-      icon: Briefcase,
-      title: "Corporate Brand Videos",
-      description: "Professional edits for company profiles, explainers, and internal content.",
-      color: "text-secondary",
-    },
+    // ... keep existing code
+
   ];
 
   return (
-    <section id="services" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-muted/30">
+    <section id="services" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
       <div className="container mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
             What I{" "}
             <span className="relative inline-block font-handwritten">
               <span className="relative z-10">Do</span>
-              <span className="absolute bottom-1 left-0 right-0 h-3 bg-teal/30 -z-0"></span>
+              <svg className="absolute -bottom-2 left-0 w-full" height="16" viewBox="0 0 200 16" preserveAspectRatio="none">
+                <path d="M0,10 Q50,4 100,10 T200,10" stroke="#1BB6F9" strokeWidth="4" fill="none" className="animate-draw-line" />
+              </svg>
             </span>
           </h2>
           <p className="text-lg text-muted-foreground">

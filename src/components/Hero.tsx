@@ -10,7 +10,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-20 pb-16 px-4 sm:px-6 lg:px-8">
+    <section id="home" className="min-h-screen flex items-center justify-center pt-32 pb-12 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto max-w-4xl">
         <div className="space-y-6 animate-fade-in text-center flex flex-col items-center">
           <p className="text-xs sm:text-sm uppercase tracking-wider text-muted-foreground font-medium">
@@ -25,7 +25,9 @@ const Hero = () => {
               that keep viewers{" "}
               <span className="relative inline-block">
                 <span className="relative z-10">hooked</span>
-                <span className="absolute bottom-1 left-0 right-0 h-3 bg-highlight/30 -z-0"></span>
+                <svg className="absolute -bottom-1 left-0 w-full" height="12" viewBox="0 0 200 12" preserveAspectRatio="none">
+                  <path d="M0,8 Q50,2 100,8 T200,8" stroke="#FBB130" strokeWidth="3" fill="none" className="animate-draw-line" />
+                </svg>
               </span>
               .
             </span>
@@ -33,10 +35,10 @@ const Hero = () => {
 
           <div className="flex flex-col sm:flex-row gap-3 pt-4 justify-center">
             <p className="text-sm text-muted-foreground">
-              <span className="inline-block mr-2">✓</span>2+ years as a freelance editor
+              <span className="inline-block mr-2 text-primary">✓</span>2+ years as a freelance editor
             </p>
             <p className="text-sm text-muted-foreground">
-              <span className="inline-block mr-2">✓</span>Focused on Reels, ads, YouTube videos & UI animations
+              <span className="inline-block mr-2 text-primary">✓</span>Focused on Reels, ads, YouTube videos & UI animations
             </p>
           </div>
 
@@ -61,7 +63,12 @@ const Hero = () => {
           </div>
 
           <p className="text-sm text-muted-foreground pt-4">
-            Available for brands & creators worldwide
+            Available for <span className="relative inline-block">
+              <span className="relative z-10">brands & creators</span>
+              <svg className="absolute -bottom-1 left-0 w-full" height="8" viewBox="0 0 200 8" preserveAspectRatio="none">
+                <path d="M0,5 Q50,2 100,5 T200,5" stroke="#1BB6F9" strokeWidth="2" fill="none" className="animate-draw-line" />
+              </svg>
+            </span> worldwide
           </p>
         </div>
       </div>

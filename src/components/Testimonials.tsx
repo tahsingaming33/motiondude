@@ -3,33 +3,21 @@ import { Quote } from "lucide-react";
 
 const Testimonials = () => {
   const testimonials = [
-    {
-      quote: "Tahsin's editing style perfectly captured our brand voice. The reels he created drove significant engagement and new leads.",
-      author: "Trading Niche Creator",
-      role: "Personal Brand Client",
-    },
-    {
-      quote: "Professional, creative, and always delivers on time. The UI animations brought our product demo to life.",
-      author: "Tech Startup Founder",
-      role: "B2B SaaS",
-    },
-    {
-      quote: "Working with Tahsin was effortless. He understood the vision immediately and exceeded expectations.",
-      author: "Content Creator",
-      role: "YouTube Channel",
-    },
+    // ... keep existing code
   ];
 
   return (
-    <section id="testimonials" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-muted/30">
+    <section id="testimonials" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
       <div className="container mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            Client{" "}
             <span className="relative inline-block font-handwritten">
-              <span className="relative z-10">Client</span>
-              <span className="absolute bottom-1 left-0 right-0 h-3 bg-secondary/30 -z-0"></span>
-            </span>{" "}
-            Feedback
+              <span className="relative z-10">Feedback</span>
+              <svg className="absolute -bottom-2 left-0 w-full" height="16" viewBox="0 0 200 16" preserveAspectRatio="none">
+                <path d="M0,10 Q50,4 100,10 T200,10" stroke="#FBB130" strokeWidth="4" fill="none" className="animate-draw-line" />
+              </svg>
+            </span>
           </h2>
           <p className="text-lg text-muted-foreground">
             A few words from the brands and creators I've worked with.
