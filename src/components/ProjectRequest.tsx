@@ -59,13 +59,15 @@ const ProjectRequest = () => {
   };
 
   return (
-    <section id="project-request" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8">
+    <section id="project-request" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto max-w-4xl">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
             <span className="relative inline-block font-handwritten">
               <span className="relative z-10">Start</span>
-              <span className="absolute bottom-1 left-0 right-0 h-3 bg-highlight/30 -z-0"></span>
+              <svg className="absolute -bottom-2 left-0 w-full" height="16" viewBox="0 0 200 16" preserveAspectRatio="none">
+                <path d="M0,10 Q50,4 100,10 T200,10" stroke="#FC787D" strokeWidth="4" fill="none" className="animate-draw-line" />
+              </svg>
             </span>{" "}
             a Project
           </h2>

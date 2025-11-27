@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
+import ThemeToggle from "./ThemeToggle";
+import AvailabilityBadge from "./AvailabilityBadge";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,41 +40,52 @@ const Navbar = () => {
       }`}
     >
       <div className={`bg-background/95 backdrop-blur-md shadow-medium rounded-full px-6 py-3 border border-border/50 transition-all duration-300`}>
-        <div className="flex items-center gap-8">
-          <button
-            onClick={() => scrollToSection("home")}
-            className="flex items-center justify-center hover:scale-110 transition-transform"
-          >
-            <img src={logo} alt="Motion Dude" className="h-10 w-10" />
-          </button>
+        <div className="flex items-center justify-between gap-6">
+          <div className="flex items-center gap-6">
+            <button
+              onClick={() => scrollToSection("home")}
+              className="flex items-center justify-center hover:scale-110 transition-transform"
+            >
+              <img src={logo} alt="Motion Dude" className="h-10 w-10" />
+            </button>
+            <div className="hidden md:block">
+              <AvailabilityBadge />
+            </div>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors whitespace-nowrap"
+            <div className="flex items-center gap-4">
+              {navLinks.map((link) => (
+                <button
+                  key={link.id}
+                  onClick={() => scrollToSection(link.id)}
+                  className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors whitespace-nowrap"
+                >
+                  {link.label}
+                </button>
+              ))}
+              <Button 
+                onClick={() => scrollToSection("project-request")} 
+                className="bg-primary hover:bg-primary/90 rounded-full"
+                size="sm"
               >
-                {link.label}
-              </button>
-            ))}
-            <Button 
-              onClick={() => scrollToSection("project-request")} 
-              className="bg-primary hover:bg-primary/90 rounded-full"
-              size="sm"
-            >
-              Request a Project
-            </Button>
+                Request a Project
+              </Button>
+            </div>
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
-          >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          <div className="md:hidden flex items-center gap-3">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 text-foreground hover:text-primary transition-colors"
+            >
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -80,6 +93,9 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden absolute top-full mt-2 left-0 right-0 bg-background rounded-2xl border border-border shadow-medium p-4">
           <div className="space-y-2">
+            <div className="pb-3 mb-2 border-b border-border">
+              <AvailabilityBadge />
+            </div>
             {navLinks.map((link) => (
               <button
                 key={link.id}
