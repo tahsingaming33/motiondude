@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Play, ArrowRight } from "lucide-react";
-import profileImage from "@/assets/profile-tahsin.jpg";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -11,19 +10,12 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center pt-20 pb-16 px-4 sm:px-6 lg:px-8">
+    <section id="home" className="min-h-screen flex items-center justify-center pt-20 pb-16 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto max-w-4xl">
-        <div className="space-y-6 animate-fade-in">
-          <div className="flex items-center gap-4">
-            <img
-              src={profileImage}
-              alt="Tahsin Mahmud"
-              className="w-16 h-16 rounded-full border-4 border-background shadow-medium"
-            />
-            <p className="text-xs sm:text-sm uppercase tracking-wider text-muted-foreground font-medium">
-              Video Editor & Motion Designer
-            </p>
-          </div>
+        <div className="space-y-6 animate-fade-in text-center flex flex-col items-center">
+          <p className="text-xs sm:text-sm uppercase tracking-wider text-muted-foreground font-medium">
+            Video Editor & Motion Designer
+          </p>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl leading-tight">
             <span className="font-handwritten text-5xl sm:text-6xl lg:text-7xl block mb-2">
@@ -39,12 +31,7 @@ const Hero = () => {
             </span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-xl">
-            I'm Tahsin Mahmud, a video editor and motion designer helping brands and creators turn ideas into
-            scroll-stopping content.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-3 pt-4">
+          <div className="flex flex-col sm:flex-row gap-3 pt-4 justify-center">
             <p className="text-sm text-muted-foreground">
               <span className="inline-block mr-2">✓</span>2+ years as a freelance editor
             </p>
@@ -53,7 +40,7 @@ const Hero = () => {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 pt-6">
+          <div className="flex flex-col sm:flex-row gap-4 pt-6 justify-center">
             <Button
               size="lg"
               className="bg-primary hover:bg-primary/90 text-primary-foreground group"
