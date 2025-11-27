@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +25,6 @@ const Navbar = () => {
 
   const navLinks = [
     { label: "Home", id: "home" },
-    { label: "About", id: "about" },
     { label: "Work", id: "work" },
     { label: "Services", id: "services" },
     { label: "Testimonials", id: "testimonials" },
@@ -33,31 +33,35 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-md shadow-soft" : "bg-transparent"
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ${
+        isScrolled ? "top-2" : ""
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
+      <div className={`bg-background/95 backdrop-blur-md shadow-medium rounded-full px-6 py-3 border border-border/50 transition-all duration-300`}>
+        <div className="flex items-center gap-8">
           <button
             onClick={() => scrollToSection("home")}
-            className="font-handwritten text-2xl sm:text-3xl font-bold text-primary hover:text-primary/80 transition-colors"
+            className="flex items-center justify-center hover:scale-110 transition-transform"
           >
-            Tahsin
+            <img src={logo} alt="Motion Dude" className="h-10 w-10" />
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
+                className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors whitespace-nowrap"
               >
                 {link.label}
               </button>
             ))}
-            <Button onClick={() => scrollToSection("project-request")} className="bg-primary hover:bg-primary/90">
+            <Button 
+              onClick={() => scrollToSection("project-request")} 
+              className="bg-primary hover:bg-primary/90 rounded-full"
+              size="sm"
+            >
               Request a Project
             </Button>
           </div>
@@ -67,27 +71,27 @@ const Navbar = () => {
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden bg-background border-t border-border shadow-medium">
-          <div className="container mx-auto px-4 py-4 space-y-3">
+        <div className="md:hidden absolute top-full mt-2 left-0 right-0 bg-background rounded-2xl border border-border shadow-medium p-4">
+          <div className="space-y-2">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="block w-full text-left py-2 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
+                className="block w-full text-left py-2 px-4 text-sm font-medium text-foreground/70 hover:text-foreground hover:bg-muted rounded-lg transition-colors"
               >
                 {link.label}
               </button>
             ))}
             <Button
               onClick={() => scrollToSection("project-request")}
-              className="w-full bg-primary hover:bg-primary/90"
+              className="w-full bg-primary hover:bg-primary/90 rounded-full mt-2"
             >
               Request a Project
             </Button>
