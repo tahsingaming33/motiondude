@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MessageCircle, Instagram, Youtube, Twitter } from "lucide-react";
+import { Mail, Phone, MessageCircle, Instagram, Youtube, Twitter, Linkedin } from "lucide-react";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -39,7 +39,7 @@ const Contact = () => {
     { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/motiondudehere/", username: "@motiondudehere" },
     { icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@motiondude1", username: "@motiondude1" },
     { icon: Twitter, label: "X", href: "https://x.com/motiondudegone", username: "@motiondudegone" },
-    { icon: Twitter, label: "LinkedIn", href: "https://www.linkedin.com/in/tahsin-mahmud-bdt/", username: "tahsin-mahmud-bdt" },
+    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/tahsin-mahmud-bdt/", username: "tahsin-mahmud-bdt" },
   ];
 
   return (
@@ -92,11 +92,12 @@ const Contact = () => {
               <p className="text-sm text-muted-foreground mb-4">
                 Prefer to talk first? Send me a message on WhatsApp.
               </p>
-              <Button asChild className="w-full bg-secondary hover:bg-secondary/90">
-                <a href="https://wa.me/8801940295660" target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="mr-2 h-5 w-5" />
-                  Chat on WhatsApp
-                </a>
+              <Button 
+                onClick={() => window.location.href = 'https://wa.me/8801940295660'}
+                className="w-full bg-secondary hover:bg-secondary/90"
+              >
+                <MessageCircle className="mr-2 h-5 w-5" />
+                Chat on WhatsApp
               </Button>
             </div>
           </Card>
@@ -106,12 +107,10 @@ const Contact = () => {
             <h3 className="font-semibold text-xl mb-6">Follow My Work</h3>
             <div className="space-y-4">
               {socialLinks.map((social, index) => (
-                <a
+                <button
                   key={index}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors group"
+                  onClick={() => window.location.href = social.href}
+                  className="flex items-center gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors group w-full text-left"
                 >
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-light to-background flex items-center justify-center group-hover:scale-110 transition-transform">
                     <social.icon className="w-5 h-5 text-primary" />
@@ -120,7 +119,7 @@ const Contact = () => {
                     <p className="font-medium group-hover:text-primary transition-colors">{social.label}</p>
                     <p className="text-sm text-muted-foreground">{social.username}</p>
                   </div>
-                </a>
+                </button>
               ))}
             </div>
 
