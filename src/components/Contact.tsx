@@ -71,7 +71,7 @@ const Contact = () => {
                       if (method.label === "Email" || method.label === "Phone") {
                         copyToClipboard(method.value, method.label);
                       } else {
-                        window.open(method.href, '_blank');
+                        window.open(method.href, "_blank", "noopener,noreferrer");
                       }
                     }}
                     className="flex items-center gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors group w-full text-left"
@@ -93,7 +93,7 @@ const Contact = () => {
                 Prefer to talk first? Send me a message on WhatsApp.
               </p>
               <Button 
-                onClick={() => window.location.href = 'https://wa.me/8801940295660'}
+                onClick={() => window.open("https://wa.me/8801940295660", "_blank", "noopener,noreferrer")}
                 className="w-full bg-secondary hover:bg-secondary/90"
               >
                 <MessageCircle className="mr-2 h-5 w-5" />
@@ -109,7 +109,7 @@ const Contact = () => {
               {socialLinks.map((social, index) => (
                 <button
                   key={index}
-                  onClick={() => window.location.href = social.href}
+                  onClick={() => window.open(social.href, "_blank", "noopener,noreferrer")}
                   className="flex items-center gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors group w-full text-left"
                 >
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-light to-background flex items-center justify-center group-hover:scale-110 transition-transform">
