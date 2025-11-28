@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import logo from "@/assets/logo.png";
 import ThemeToggle from "./ThemeToggle";
-import AvailabilityBadge from "./AvailabilityBadge";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -41,17 +40,12 @@ const Navbar = () => {
     >
       <div className={`bg-background/95 backdrop-blur-md shadow-medium rounded-full px-6 py-3 border border-border/50 transition-all duration-300`}>
         <div className="flex items-center justify-between gap-6">
-          <div className="flex items-center gap-6">
-            <button
-              onClick={() => scrollToSection("home")}
-              className="flex items-center justify-center hover:scale-110 transition-transform"
-            >
-              <img src={logo} alt="Motion Dude" className="h-10 w-10" />
-            </button>
-            <div className="hidden md:block">
-              <AvailabilityBadge />
-            </div>
-          </div>
+          <button
+            onClick={() => scrollToSection("home")}
+            className="flex items-center justify-center hover:scale-110 transition-transform"
+          >
+            <img src={logo} alt="Motion Dude" className="h-10 w-10" />
+          </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
@@ -93,9 +87,6 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden absolute top-full mt-2 left-0 right-0 bg-background rounded-2xl border border-border shadow-medium p-4">
           <div className="space-y-2">
-            <div className="pb-3 mb-2 border-b border-border">
-              <AvailabilityBadge />
-            </div>
             {navLinks.map((link) => (
               <button
                 key={link.id}
