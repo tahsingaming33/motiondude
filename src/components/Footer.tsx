@@ -13,7 +13,7 @@ const Footer = () => {
       <div className="container mx-auto">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} Tahsin Mahmud. All rights reserved.
+            © {currentYear} Motion Dude. All rights reserved.
           </p>
 
           <nav className="flex flex-wrap items-center justify-center gap-6">
