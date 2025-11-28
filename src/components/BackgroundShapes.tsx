@@ -1,6 +1,6 @@
 const BackgroundShapes = () => {
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
       {/* Animated floating shapes */}
       <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-[#FBB130]/10 animate-float" 
            style={{ animationDelay: "0s", animationDuration: "8s" }} />

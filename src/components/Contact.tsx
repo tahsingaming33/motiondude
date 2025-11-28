@@ -1,33 +1,45 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MessageCircle, Instagram, Youtube, Twitter } from "lucide-react";
 
 const Contact = () => {
+  const { toast } = useToast();
+
+  const copyToClipboard = (text: string, type: string) => {
+    navigator.clipboard.writeText(text);
+    toast({
+      title: "Copied!",
+      description: `${type} copied to clipboard`,
+    });
+  };
+
   const contactMethods = [
     {
       icon: Mail,
       label: "Email",
-      value: "tahsin@example.com",
-      href: "mailto:tahsin@example.com",
+      value: "tahasinmahmud12@gmail.com",
+      href: "mailto:tahasinmahmud12@gmail.com",
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
+      value: "+8801940295660",
+      href: "tel:+8801940295660",
     },
     {
       icon: MessageCircle,
       label: "WhatsApp",
       value: "Message on WhatsApp",
-      href: "https://wa.me/15551234567",
+      href: "https://wa.me/8801940295660",
     },
   ];
 
   const socialLinks = [
-    { icon: Instagram, label: "Instagram", href: "https://instagram.com" },
-    { icon: Youtube, label: "YouTube", href: "https://youtube.com" },
-    { icon: Twitter, label: "X (Twitter)", href: "https://x.com" },
+    { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/motiondudehere/", username: "@motiondudehere" },
+    { icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@motiondude1", username: "@motiondude1" },
+    { icon: Twitter, label: "X", href: "https://x.com/motiondudegone", username: "@motiondudegone" },
+    { icon: Twitter, label: "LinkedIn", href: "https://www.linkedin.com/in/tahsin-mahmud-bdt/", username: "tahsin-mahmud-bdt" },
   ];
 
   return (
@@ -53,10 +65,16 @@ const Contact = () => {
               <h3 className="font-semibold text-xl mb-6">Contact Information</h3>
               <div className="space-y-4">
                 {contactMethods.map((method, index) => (
-                  <a
+                  <button
                     key={index}
-                    href={method.href}
-                    className="flex items-center gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors group"
+                    onClick={() => {
+                      if (method.label === "Email" || method.label === "Phone") {
+                        copyToClipboard(method.value, method.label);
+                      } else {
+                        window.open(method.href, '_blank');
+                      }
+                    }}
+                    className="flex items-center gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors group w-full text-left"
                   >
                     <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                       <method.icon className="w-5 h-5 text-primary" />
@@ -65,7 +83,7 @@ const Contact = () => {
                       <p className="text-sm text-muted-foreground">{method.label}</p>
                       <p className="font-medium group-hover:text-primary transition-colors">{method.value}</p>
                     </div>
-                  </a>
+                  </button>
                 ))}
               </div>
             </div>
@@ -75,7 +93,7 @@ const Contact = () => {
                 Prefer to talk first? Send me a message on WhatsApp.
               </p>
               <Button asChild className="w-full bg-secondary hover:bg-secondary/90">
-                <a href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/8801940295660" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2 h-5 w-5" />
                   Chat on WhatsApp
                 </a>
@@ -100,7 +118,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-medium group-hover:text-primary transition-colors">{social.label}</p>
-                    <p className="text-sm text-muted-foreground">@tahsinmahmud</p>
+                    <p className="text-sm text-muted-foreground">{social.username}</p>
                   </div>
                 </a>
               ))}

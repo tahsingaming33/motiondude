@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import AvailabilityBadge from "./AvailabilityBadge";
 import { Play, ArrowRight } from "lucide-react";
 
 const Hero = () => {
@@ -13,6 +14,7 @@ const Hero = () => {
     <section id="home" className="min-h-screen flex items-center justify-center pt-32 pb-12 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto max-w-4xl">
         <div className="space-y-6 animate-fade-in text-center flex flex-col items-center">
+          <AvailabilityBadge />
           <p className="text-xs sm:text-sm uppercase tracking-wider text-muted-foreground font-medium">
             Video Editor & Motion Designer
           </p>

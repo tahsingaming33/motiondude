@@ -3,8 +3,36 @@ import { Film, Megaphone, Sparkles, Video, Briefcase } from "lucide-react";
 
 const Services = () => {
   const services = [
-    // ... keep existing code
-
+    {
+      icon: Film,
+      title: "Reels Editing",
+      description: "Fast-paced, engaging short-form content optimized for Instagram, TikTok, and YouTube Shorts.",
+      color: "text-[#1BB6F9]",
+    },
+    {
+      icon: Megaphone,
+      title: "Ad Videos",
+      description: "Conversion-focused video ads that capture attention and drive results for your campaigns.",
+      color: "text-[#FBB130]",
+    },
+    {
+      icon: Sparkles,
+      title: "UI Animation",
+      description: "Smooth, professional motion graphics and interface animations for apps and websites.",
+      color: "text-[#FC787D]",
+    },
+    {
+      icon: Video,
+      title: "YouTube Editing",
+      description: "Long-form content editing with engaging pacing, graphics, and retention-focused storytelling.",
+      color: "text-[#00DAC5]",
+    },
+    {
+      icon: Briefcase,
+      title: "Corporate Brand Videos",
+      description: "Professional brand videos that communicate your message with clarity and style.",
+      color: "text-[#1BB6F9]",
+    },
   ];
 
   return (
