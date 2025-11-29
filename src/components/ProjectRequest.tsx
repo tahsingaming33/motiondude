@@ -7,10 +7,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { Send } from "lucide-react";
+import { Send, Loader2 } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 const ProjectRequest = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -40,23 +42,57 @@ const ProjectRequest = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Project request sent!",
-      description: "I'll get back to you within 24-48 hours.",
-    });
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      whatsapp: "",
-      brandName: "",
-      projectTypes: [],
-      description: "",
-      deadline: "",
-      budget: "",
-    });
+    setIsSubmitting(true);
+
+    try {
+      // Prepare template parameters for EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        whatsapp: formData.whatsapp || "Not provided",
+        brand_name: formData.brandName || "Not provided",
+        project_types: formData.projectTypes.join(", ") || "Not specified",
+        description: formData.description,
+        deadline: formData.deadline || "Not specified",
+        budget: formData.budget || "Not specified",
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(
+        'service_jt6qxw7',
+        'template_xwlg5dc',
+        templateParams,
+        '9bGP8MzDiD46xuquV'
+      );
+
+      toast({
+        title: "Project request sent!",
+        description: "I'll get back to you within 24-48 hours.",
+      });
+
+      // Reset form on success
+      setFormData({
+        name: "",
+        email: "",
+        whatsapp: "",
+        brandName: "",
+        projectTypes: [],
+        description: "",
+        deadline: "",
+        budget: "",
+      });
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      toast({
+        title: "Failed to send request",
+        description: "Something went wrong. Please try again or contact me directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -194,9 +230,23 @@ const ProjectRequest = () => {
               </div>
             </div>
 
-            <Button type="submit" size="lg" className="w-full bg-primary hover:bg-primary/90 group">
-              <Send className="mr-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              Send Project Request
+            <Button 
+              type="submit" 
+              size="lg" 
+              className="w-full bg-primary hover:bg-primary/90 group"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                <>
+                  <Send className="mr-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  Send Project Request
+                </>
+              )}
             </Button>
 
             <p className="text-sm text-center text-muted-foreground">
