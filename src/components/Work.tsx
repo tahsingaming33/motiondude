@@ -1,8 +1,30 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Play } from "lucide-react";
+import { useState } from "react";
+
+// Helper function to extract YouTube video ID from various URL formats
+const getYouTubeVideoId = (url: string): string | null => {
+  if (!url) return null;
+  
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/)([^&\n?#]+)/,
+    /youtube\.com\/embed\/([^&\n?#]+)/,
+  ];
+  
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match && match[1]) {
+      return match[1];
+    }
+  }
+  
+  return null;
+};
 
 const Work = () => {
+  const [playingVideo, setPlayingVideo] = useState<string | null>(null);
+  
   const categories = [
     {
       name: "Motion graphic",
@@ -150,23 +172,57 @@ const Work = () => {
                     <p className="text-muted-foreground">Coming soon...</p>
                   </div>
                 ) : (
-                  category.projects.map((project, index) => (
-                    <Card
-                      key={index}
-                      onClick={() => project.url && window.open(project.url, "_blank", "noopener,noreferrer")}
-                      className="group relative overflow-hidden shadow-soft hover:shadow-medium transition-all duration-300 cursor-pointer animate-fade-in"
-                      style={{ animationDelay: `${index * 0.1}s` }}
-                    >
-                      <div
-                        className={`relative bg-gradient-to-br from-purple-light to-background flex items-center justify-center ${
-                          category.name === "Short form" ? "aspect-[9/16]" : "aspect-video"
-                        }`}
+                  category.projects.map((project, index) => {
+                    const videoId = getYouTubeVideoId(project.url || "");
+                    const isPlaying = playingVideo === `${category.name}-${index}`;
+                    const thumbnailUrl = videoId 
+                      ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
+                      : null;
+
+                    return (
+                      <Card
+                        key={index}
+                        onClick={() => {
+                          if (videoId && !isPlaying) {
+                            setPlayingVideo(`${category.name}-${index}`);
+                          }
+                        }}
+                        className="group relative overflow-hidden shadow-soft hover:shadow-medium transition-all duration-300 cursor-pointer animate-fade-in"
+                        style={{ animationDelay: `${index * 0.1}s` }}
                       >
-                        <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <div className="relative z-10 flex items-center justify-center w-12 h-12 rounded-full bg-primary/90 group-hover:bg-primary group-hover:scale-110 transition-all shadow-medium">
-                          <Play className="w-5 h-5 text-primary-foreground ml-0.5" fill="currentColor" />
+                        <div
+                          className={`relative bg-gradient-to-br from-purple-light to-background flex items-center justify-center ${
+                            category.name === "Short form" ? "aspect-[9/16]" : "aspect-video"
+                          }`}
+                        >
+                          {isPlaying && videoId ? (
+                            <iframe
+                              className="absolute inset-0 w-full h-full"
+                              src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
+                              title={project.title}
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                            />
+                          ) : (
+                            <>
+                              {thumbnailUrl && (
+                                <img
+                                  src={thumbnailUrl}
+                                  alt={project.title}
+                                  className="absolute inset-0 w-full h-full object-cover"
+                                  onError={(e) => {
+                                    // Fallback to default thumbnail if maxresdefault doesn't exist
+                                    e.currentTarget.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                                  }}
+                                />
+                              )}
+                              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                              <div className="relative z-10 flex items-center justify-center w-12 h-12 rounded-full bg-primary/90 group-hover:bg-primary group-hover:scale-110 transition-all shadow-medium">
+                                <Play className="w-5 h-5 text-primary-foreground ml-0.5" fill="currentColor" />
+                              </div>
+                            </>
+                          )}
                         </div>
-                      </div>
 
                       <div className="p-4">
                         <div className="mb-2">
@@ -184,8 +240,9 @@ const Work = () => {
                           ))}
                         </div>
                       </div>
-                    </Card>
-                  ))
+                      </Card>
+                    );
+                  })
                 )}
               </div>
             </div>
