@@ -41,10 +41,10 @@ const Services = () => {
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
             What I{" "}
-            <span className="relative inline-block font-handwritten">
+            <span className="relative inline-block font-handwritten animate-handwriting">
               <span className="relative z-10">Do</span>
               <svg className="absolute -bottom-2 left-0 w-full" height="16" viewBox="0 0 200 16" preserveAspectRatio="none">
-                <path d="M0,10 Q50,4 100,10 T200,10" stroke="#1BB6F9" strokeWidth="4" fill="none" className="animate-draw-line" />
+                <path d="M0,10 Q50,4 100,10 T200,10" stroke="#1BB6F9" strokeWidth="4" fill="none" className="animate-draw-underline" strokeDasharray="200" strokeDashoffset="200" />
               </svg>
             </span>
           </h2>

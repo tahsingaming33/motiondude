@@ -144,11 +144,45 @@ All colors MUST be HSL.
     }
   }
 
+  @keyframes handwriting {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes draw-underline {
+    0% {
+      stroke-dashoffset: 200;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
   .animate-float {
     animation: float 8s ease-in-out infinite;
   }
 
   .animate-draw-line {
     animation: draw-line 2s ease-out forwards;
+  }
+
+  .animate-handwriting {
+    animation: handwriting 1.5s ease-out infinite;
+    animation-delay: 0.5s;
+  }
+
+  .animate-draw-underline {
+    animation: draw-underline 1.5s ease-out infinite;
+    animation-delay: 0.8s;
   }
 }
