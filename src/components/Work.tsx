@@ -42,6 +42,12 @@ const Work = () => {
           url: "https://www.youtube.com/watch?v=g2m33404Pyc",
         },
         {
+          title: "Motion Graphics Showcase",
+          description: "Dynamic visual effects and transitions",
+          tags: ["Motion", "VFX"],
+          url: "https://youtu.be/8CEhKOfx2wQ",
+        },
+        {
           title: "Logo Animation",
           description: "Dynamic brand reveal",
           tags: ["Logo", "Intro"],
@@ -62,12 +68,6 @@ const Work = () => {
           description: "Inspiring storytelling with cinematic cuts",
           tags: ["Motivational", "YouTube"],
           url: "https://youtu.be/gsaPejctklY",
-        },
-        {
-          title: "YouTube Long-form Edit",
-          description: "Long-form storytelling video",
-          tags: ["YouTube", "Long form"],
-          url: "https://youtu.be/xjekzKwZ3QI",
         },
       ],
     },
