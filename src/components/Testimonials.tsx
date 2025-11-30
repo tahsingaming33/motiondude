@@ -68,10 +68,10 @@ const Testimonials = () => {
                 transform: `rotate(${testimonial.rotation}deg) scale(${testimonial.scale})`,
                 animation: `float-${index % 3} 6s ease-in-out infinite`,
                 animationDelay: `${index * 0.3}s`,
-                // Scattered positioning
-                left: `${(index % 3) * 30 + 5}%`,
-                top: `${Math.floor(index / 3) * 280}px`,
-                maxWidth: '320px',
+                // Scattered positioning - adjusted to prevent overlap
+                left: index === 0 ? '5%' : index === 1 ? '38%' : index === 2 ? '70%' : index === 3 ? '5%' : index === 4 ? '38%' : '70%',
+                top: index < 3 ? '0px' : '240px',
+                maxWidth: '260px',
                 borderRadius: '1rem',
               }}
             >
