@@ -47,11 +47,6 @@ const Work = () => {
           tags: ["Motion", "VFX"],
           url: "https://youtu.be/8CEhKOfx2wQ",
         },
-        {
-          title: "Logo Animation",
-          description: "Dynamic brand reveal",
-          tags: ["Logo", "Intro"],
-        },
       ],
     },
     {
@@ -68,6 +63,11 @@ const Work = () => {
           description: "Inspiring storytelling with cinematic cuts",
           tags: ["Motivational", "YouTube"],
           url: "https://youtu.be/gsaPejctklY",
+        },
+        {
+          title: "Coming Soon",
+          description: "New project in the works",
+          tags: ["Upcoming"],
         },
       ],
     },
@@ -125,7 +125,7 @@ const Work = () => {
       <div className="container mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="relative inline-block font-handwritten">
+            <span className="relative inline-block font-handwritten animate-handwriting">
               <span className="relative z-10">Selected</span>
               <svg
                 className="absolute -bottom-2 left-0 w-full"
@@ -138,7 +138,9 @@ const Work = () => {
                   stroke="#FC787D"
                   strokeWidth="4"
                   fill="none"
-                  className="animate-draw-line"
+                  className="animate-draw-underline"
+                  strokeDasharray="200"
+                  strokeDashoffset="200"
                 />
               </svg>
             </span>{" "}

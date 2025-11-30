@@ -1,47 +1,40 @@
 import { Card } from "@/components/ui/card";
-import { Quote } from "lucide-react";
+import testimonial1 from "@/assets/testimonial-1.jpg";
+import testimonial2 from "@/assets/testimonial-2.jpg";
+import testimonial3 from "@/assets/testimonial-3.jpg";
+import testimonial4 from "@/assets/testimonial-4.jpg";
+import testimonial5 from "@/assets/testimonial-5.jpg";
+import testimonial6 from "@/assets/testimonial-6.jpg";
 
 const Testimonials = () => {
   const testimonials = [
     {
-      quote: "Working with Tahsin was an absolute pleasure. The video editing quality exceeded our expectations!",
-      author: "John Smith",
-      role: "CEO, Tech Startup",
+      image: testimonial1,
       rotation: -2,
       scale: 1,
     },
     {
-      quote: "Amazing attention to detail and fast turnaround. Highly recommend!",
-      author: "Sarah Johnson",
-      role: "Content Creator",
+      image: testimonial2,
       rotation: 3,
       scale: 0.95,
     },
     {
-      quote: "The motion graphics brought our brand story to life. Truly exceptional work!",
-      author: "Michael Chen",
-      role: "Marketing Director",
+      image: testimonial3,
       rotation: -3,
       scale: 1.05,
     },
     {
-      quote: "Professional, creative, and always delivers on time. Best editor we've worked with.",
-      author: "Emma Wilson",
-      role: "Brand Manager",
+      image: testimonial4,
       rotation: 2,
       scale: 0.98,
     },
     {
-      quote: "The short-form content created for us went viral! Tahsin understands what works.",
-      author: "David Lee",
-      role: "Social Media Manager",
+      image: testimonial5,
       rotation: -1,
       scale: 1.02,
     },
     {
-      quote: "Incredible creativity and technical skills. Our videos have never looked better!",
-      author: "Lisa Anderson",
-      role: "YouTube Creator",
+      image: testimonial6,
       rotation: 2.5,
       scale: 0.96,
     },
@@ -53,10 +46,10 @@ const Testimonials = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
             Client{" "}
-            <span className="relative inline-block font-handwritten">
+            <span className="relative inline-block font-handwritten animate-handwriting">
               <span className="relative z-10">Feedback</span>
               <svg className="absolute -bottom-2 left-0 w-full" height="16" viewBox="0 0 200 16" preserveAspectRatio="none">
-                <path d="M0,10 Q50,4 100,10 T200,10" stroke="#FBB130" strokeWidth="4" fill="none" className="animate-draw-line" />
+                <path d="M0,10 Q50,4 100,10 T200,10" stroke="#FBB130" strokeWidth="4" fill="none" className="animate-draw-underline" strokeDasharray="200" strokeDashoffset="200" />
               </svg>
             </span>
           </h2>
@@ -70,7 +63,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <Card
               key={index}
-              className="absolute p-6 sm:p-8 bg-background shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer group"
+              className="absolute overflow-hidden bg-background shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer group"
               style={{
                 transform: `rotate(${testimonial.rotation}deg) scale(${testimonial.scale})`,
                 animation: `float-${index % 3} 6s ease-in-out infinite`,
@@ -83,12 +76,11 @@ const Testimonials = () => {
               }}
             >
               <div className="group-hover:scale-105 group-hover:-rotate-1 transition-transform duration-300">
-                <Quote className="w-8 h-8 text-primary/20 mb-3" />
-                <p className="text-foreground mb-4 leading-relaxed text-sm">"{testimonial.quote}"</p>
-                <div>
-                  <p className="font-semibold text-foreground text-sm">{testimonial.author}</p>
-                  <p className="text-xs text-muted-foreground">{testimonial.role}</p>
-                </div>
+                <img 
+                  src={testimonial.image} 
+                  alt={`Client feedback ${index + 1}`}
+                  className="w-full h-auto"
+                />
               </div>
             </Card>
           ))}

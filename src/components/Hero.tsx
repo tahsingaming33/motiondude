@@ -19,7 +19,7 @@ const Hero = () => {
           </p>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl leading-tight">
-            <span className="font-handwritten text-5xl sm:text-6xl block mb-2 lg:text-8xl">
+            <span className="font-handwritten text-5xl sm:text-6xl block mb-2 lg:text-8xl animate-handwriting">
               Engaging videos
             </span>
             <span className="font-bold">
@@ -27,7 +27,7 @@ const Hero = () => {
               <span className="relative inline-block">
                 <span className="relative z-10">hooked</span>
                 <svg className="absolute -bottom-1 left-0 w-full" height="12" viewBox="0 0 200 12" preserveAspectRatio="none">
-                  <path d="M0,8 Q50,2 100,8 T200,8" stroke="#FBB130" strokeWidth="3" fill="none" className="animate-draw-line" />
+                  <path d="M0,8 Q50,2 100,8 T200,8" stroke="#FBB130" strokeWidth="3" fill="none" className="animate-draw-underline" strokeDasharray="200" strokeDashoffset="200" />
                 </svg>
               </span>
               .
@@ -58,7 +58,7 @@ const Hero = () => {
             Available for <span className="relative inline-block">
               <span className="relative z-10">brands & creators</span>
               <svg className="absolute -bottom-1 left-0 w-full" height="8" viewBox="0 0 200 8" preserveAspectRatio="none">
-                <path d="M0,5 Q50,2 100,5 T200,5" stroke="#1BB6F9" strokeWidth="2" fill="none" className="animate-draw-line" />
+                <path d="M0,5 Q50,2 100,5 T200,5" stroke="#1BB6F9" strokeWidth="2" fill="none" className="animate-draw-underline" strokeDasharray="200" strokeDashoffset="200" />
               </svg>
             </span> worldwide
           </p>
