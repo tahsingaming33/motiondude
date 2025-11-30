@@ -148,18 +148,32 @@ All colors MUST be HSL.
     0% {
       opacity: 0;
       transform: translateY(10px);
+      clip-path: inset(0 100% 0 0);
     }
-    20% {
+    5% {
       opacity: 1;
       transform: translateY(0);
+      clip-path: inset(0 100% 0 0);
     }
-    80% {
+    25% {
       opacity: 1;
       transform: translateY(0);
+      clip-path: inset(0 0 0 0);
+    }
+    75% {
+      opacity: 1;
+      transform: translateY(0);
+      clip-path: inset(0 0 0 0);
+    }
+    95% {
+      opacity: 1;
+      transform: translateY(-10px);
+      clip-path: inset(0 0 0 100%);
     }
     100% {
       opacity: 0;
       transform: translateY(-10px);
+      clip-path: inset(0 0 0 100%);
     }
   }
 
