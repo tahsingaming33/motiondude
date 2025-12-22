@@ -47,6 +47,12 @@ const Work = () => {
           tags: ["Motion", "VFX"],
           url: "https://youtu.be/8CEhKOfx2wQ",
         },
+        {
+          title: "Creative Motion Edit",
+          description: "Stylized motion graphics animation",
+          tags: ["Motion", "Creative"],
+          url: "https://youtu.be/W7llHXOgpl0",
+        },
       ],
     },
     {
