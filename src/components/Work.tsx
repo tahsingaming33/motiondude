@@ -69,6 +69,12 @@ const Work = () => {
           url: "https://youtu.be/kAxTT5nkiQI",
           customThumbnail: quakeslegacyThumbnail,
         },
+        {
+          title: "Calendly Ui Animation",
+          description: "Sleek UI animation showcase",
+          tags: ["Ui animation", "Motion", "Apple style"],
+          url: "https://youtube.com/shorts/0reDsA_9aMg",
+        },
       ],
     },
     {
