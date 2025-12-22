@@ -2,7 +2,8 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Play } from "lucide-react";
 import { useState } from "react";
-import motionThumbnail4 from "@/assets/motion-thumbnail-4.png";
+import maagnusThumbnail from "@/assets/maagnus-thumbnail.jpg";
+import stripeThumbnail from "@/assets/stripe-thumbnail.jpg";
 
 // Helper function to extract YouTube video ID from various URL formats
 const getYouTubeVideoId = (url: string): string | null => {
@@ -35,6 +36,7 @@ const Work = () => {
           description: "UI showcase with smooth transitions",
           tags: ["SaaS", "Explainer"],
           url: "https://youtu.be/XKqEbWrIgXA",
+          customThumbnail: stripeThumbnail,
         },
         {
           title: "McDonald's Motion Graphic Remake",
@@ -49,11 +51,11 @@ const Work = () => {
           url: "https://youtu.be/8CEhKOfx2wQ",
         },
         {
-          title: "Creative Motion Edit",
+          title: "Maagnus SaaS Demo Video",
           description: "Stylized motion graphics animation",
           tags: ["SaaS", "Demo video", "Explainer video"],
           url: "https://youtu.be/W7llHXOgpl0",
-          customThumbnail: motionThumbnail4,
+          customThumbnail: maagnusThumbnail,
         },
       ],
     },
