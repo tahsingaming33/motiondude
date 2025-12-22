@@ -51,7 +51,7 @@ const Work = () => {
         {
           title: "Creative Motion Edit",
           description: "Stylized motion graphics animation",
-          tags: ["Motion", "Creative"],
+          tags: ["SaaS", "Demo video", "Explainer video"],
           url: "https://youtu.be/W7llHXOgpl0",
           customThumbnail: motionThumbnail4,
         },
