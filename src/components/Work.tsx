@@ -4,6 +4,9 @@ import { Play } from "lucide-react";
 import { useState } from "react";
 import maagnusThumbnail from "@/assets/maagnus-thumbnail.jpg";
 import stripeThumbnail from "@/assets/stripe-thumbnail.jpg";
+import mcdonaldsThumbnail from "@/assets/mcdonalds-thumbnail.jpg";
+import payoneerThumbnail from "@/assets/payoneer-thumbnail.jpg";
+import quakeslegacyThumbnail from "@/assets/quakeslegacy-thumbnail.jpg";
 
 // Helper function to extract YouTube video ID from various URL formats
 const getYouTubeVideoId = (url: string): string | null => {
@@ -43,12 +46,14 @@ const Work = () => {
           description: "Animated infographic style",
           tags: ["UI", "Apple style"],
           url: "https://www.youtube.com/watch?v=g2m33404Pyc",
+          customThumbnail: mcdonaldsThumbnail,
         },
         {
           title: "Motion Graphics Showcase",
           description: "Dynamic visual effects and transitions",
           tags: ["Motion", "VFX"],
           url: "https://youtu.be/8CEhKOfx2wQ",
+          customThumbnail: payoneerThumbnail,
         },
         {
           title: "Maagnus SaaS Demo Video",
@@ -57,17 +62,18 @@ const Work = () => {
           url: "https://youtu.be/W7llHXOgpl0",
           customThumbnail: maagnusThumbnail,
         },
-      ],
-    },
-    {
-      name: "Long form",
-      projects: [
         {
           title: "QuakesLegacy Introduction video",
           description: "Engaging long-form YouTube introduction",
           tags: ["YouTube video", "Explainer"],
           url: "https://youtu.be/kAxTT5nkiQI",
+          customThumbnail: quakeslegacyThumbnail,
         },
+      ],
+    },
+    {
+      name: "Long form",
+      projects: [
         {
           title: "Motivational video",
           description: "Inspiring storytelling with cinematic cuts",
