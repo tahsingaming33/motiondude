@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Play } from "lucide-react";
 import { useState } from "react";
+import motionThumbnail4 from "@/assets/motion-thumbnail-4.png";
 
 // Helper function to extract YouTube video ID from various URL formats
 const getYouTubeVideoId = (url: string): string | null => {
@@ -52,6 +53,7 @@ const Work = () => {
           description: "Stylized motion graphics animation",
           tags: ["Motion", "Creative"],
           url: "https://youtu.be/W7llHXOgpl0",
+          customThumbnail: motionThumbnail4,
         },
       ],
     },
@@ -183,9 +185,11 @@ const Work = () => {
                   category.projects.map((project, index) => {
                     const videoId = getYouTubeVideoId(project.url || "");
                     const isPlaying = playingVideo === `${category.name}-${index}`;
-                    const thumbnailUrl = videoId 
-                      ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
-                      : null;
+                    const thumbnailUrl = project.customThumbnail 
+                      ? project.customThumbnail 
+                      : videoId 
+                        ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
+                        : null;
 
                     return (
                       <Card
