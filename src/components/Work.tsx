@@ -7,6 +7,7 @@ import stripeThumbnail from "@/assets/stripe-thumbnail.jpg";
 import mcdonaldsThumbnail from "@/assets/mcdonalds-thumbnail.jpg";
 import payoneerThumbnail from "@/assets/payoneer-thumbnail.jpg";
 import quakeslegacyThumbnail from "@/assets/quakeslegacy-thumbnail.jpg";
+import calendlyThumbnail from "@/assets/calendly-thumbnail.jpg";
 
 // Helper function to extract YouTube video ID from various URL formats
 const getYouTubeVideoId = (url: string): string | null => {
@@ -74,6 +75,7 @@ const Work = () => {
           description: "Sleek UI animation showcase",
           tags: ["Ui animation", "Motion", "Apple style"],
           url: "https://youtube.com/shorts/0reDsA_9aMg",
+          customThumbnail: calendlyThumbnail,
         },
       ],
     },
