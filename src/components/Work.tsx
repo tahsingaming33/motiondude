@@ -8,7 +8,7 @@ import mcdonaldsThumbnail from "@/assets/mcdonalds-thumbnail.jpg";
 import payoneerThumbnail from "@/assets/payoneer-thumbnail.jpg";
 import quakeslegacyThumbnail from "@/assets/quakeslegacy-thumbnail.jpg";
 import calendlyThumbnail from "@/assets/calendly-thumbnail.jpg";
-
+import klyraThumbnail from "@/assets/motion-thumbnail-4.png";
 
 // Helper function to extract YouTube video ID from various URL formats
 const getYouTubeVideoId = (url: string): string | null => {
@@ -77,6 +77,13 @@ const Work = () => {
           tags: ["Ui animation", "Motion", "Apple style"],
           url: "https://youtube.com/shorts/0reDsA_9aMg",
           customThumbnail: calendlyThumbnail,
+        },
+        {
+          title: "Klyra Design",
+          description: "Clean motion graphics branding",
+          tags: ["Motion", "Branding"],
+          url: "https://youtu.be/PeGg6NdF59M",
+          customThumbnail: klyraThumbnail,
         },
       ],
     },
