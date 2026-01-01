@@ -51,13 +51,6 @@ const Work = () => {
           customThumbnail: mcdonaldsThumbnail,
         },
         {
-          title: "Motion Graphics Showcase",
-          description: "Dynamic visual effects and transitions",
-          tags: ["Motion", "VFX"],
-          url: "https://youtu.be/8CEhKOfx2wQ",
-          customThumbnail: payoneerThumbnail,
-        },
-        {
           title: "Maagnus SaaS Demo Video",
           description: "Stylized motion graphics animation",
           tags: ["SaaS", "Demo video", "Explainer video"],
