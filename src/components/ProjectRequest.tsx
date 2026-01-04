@@ -220,7 +220,6 @@ const ProjectRequest = () => {
                     <SelectValue placeholder="Select budget range" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="$300-$500">$300-$500</SelectItem>
                     <SelectItem value="$500-$700">$500-$700</SelectItem>
                     <SelectItem value="$700-$1000">$700-$1000</SelectItem>
                     <SelectItem value="$1000-$1500">$1000-$1500</SelectItem>
