@@ -203,13 +203,12 @@ const ProjectRequest = () => {
                     <SelectValue placeholder="Select timeline" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="1 day">1 day</SelectItem>
-                    <SelectItem value="2 days">2 days</SelectItem>
                     <SelectItem value="3 days">3 days</SelectItem>
                     <SelectItem value="4 days">4 days</SelectItem>
                     <SelectItem value="5 days">5 days</SelectItem>
                     <SelectItem value="6 days">6 days</SelectItem>
                     <SelectItem value="7 days">7 days</SelectItem>
+                    <SelectItem value="no-timeline">Don't have any</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
