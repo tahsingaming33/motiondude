@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MessageCircle, Instagram, Youtube, Twitter, Linkedin } from "lucide-react";
+import { Mail, Phone, MessageCircle, Instagram, Youtube, Twitter, Linkedin, ExternalLink } from "lucide-react";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -43,14 +43,17 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-muted/30">
+    <section id="contact" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 relative">
+      {/* Subtle top gradient divider */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+      
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            Get in{" "}
-            <span className="relative inline-block font-handwritten">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+            <span className="text-foreground">Get in</span>{" "}
+            <span className="relative inline-block font-handwritten text-primary">
               <span className="relative z-10">Touch</span>
-              <span className="absolute bottom-1 left-0 right-0 h-3 bg-teal/30 -z-0"></span>
+              <span className="absolute bottom-1 left-0 right-0 h-3 bg-primary/20 -z-0 rounded"></span>
             </span>
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -60,10 +63,10 @@ const Contact = () => {
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Contact Info */}
-          <Card className="p-8 bg-background shadow-soft space-y-6">
+          <Card className="p-8 bg-card border-border/50 space-y-6 glow-border">
             <div>
-              <h3 className="font-semibold text-xl mb-6">Contact Information</h3>
-              <div className="space-y-4">
+              <h3 className="font-semibold text-xl mb-6 text-foreground">Contact Information</h3>
+              <div className="space-y-3">
                 {contactMethods.map((method, index) => (
                   <button
                     key={index}
@@ -74,15 +77,18 @@ const Contact = () => {
                         window.open(method.href, "_blank", "noopener,noreferrer");
                       }
                     }}
-                    className="flex items-center gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors group w-full text-left"
+                    className="flex items-center gap-4 p-4 rounded-xl hover:bg-secondary/50 transition-all duration-300 group w-full text-left"
                   >
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
                       <method.icon className="w-5 h-5 text-primary" />
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <p className="text-sm text-muted-foreground">{method.label}</p>
-                      <p className="font-medium group-hover:text-primary transition-colors">{method.value}</p>
+                      <p className="font-medium text-foreground group-hover:text-primary transition-colors duration-300">{method.value}</p>
                     </div>
+                    {method.label !== "Email" && method.label !== "Phone" && (
+                      <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                    )}
                   </button>
                 ))}
               </div>
@@ -94,7 +100,7 @@ const Contact = () => {
               </p>
               <Button 
                 onClick={() => window.open("https://wa.me/8801940295660", "_blank", "noopener,noreferrer")}
-                className="w-full bg-secondary hover:bg-secondary/90"
+                className="w-full bg-primary hover:bg-primary/90 rounded-full transition-all duration-300 hover:shadow-glow hover:scale-[1.02]"
               >
                 <MessageCircle className="mr-2 h-5 w-5" />
                 Chat on WhatsApp
@@ -103,22 +109,23 @@ const Contact = () => {
           </Card>
 
           {/* Social Links */}
-          <Card className="p-8 bg-background shadow-soft">
-            <h3 className="font-semibold text-xl mb-6">Follow My Work</h3>
-            <div className="space-y-4">
+          <Card className="p-8 bg-card border-border/50 glow-border">
+            <h3 className="font-semibold text-xl mb-6 text-foreground">Follow My Work</h3>
+            <div className="space-y-3">
               {socialLinks.map((social, index) => (
                 <button
                   key={index}
                   onClick={() => window.open(social.href, "_blank", "noopener,noreferrer")}
-                  className="flex items-center gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors group w-full text-left"
+                  className="flex items-center gap-4 p-4 rounded-xl hover:bg-secondary/50 transition-all duration-300 group w-full text-left"
                 >
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-light to-background flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center group-hover:scale-110 transition-all duration-300">
                     <social.icon className="w-5 h-5 text-primary" />
                   </div>
-                  <div>
-                    <p className="font-medium group-hover:text-primary transition-colors">{social.label}</p>
+                  <div className="flex-1">
+                    <p className="font-medium text-foreground group-hover:text-primary transition-colors duration-300">{social.label}</p>
                     <p className="text-sm text-muted-foreground">{social.username}</p>
                   </div>
+                  <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
                 </button>
               ))}
             </div>
