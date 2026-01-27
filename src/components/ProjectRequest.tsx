@@ -47,6 +47,7 @@ const ProjectRequest = () => {
     setIsSubmitting(true);
 
     try {
+      // Prepare template parameters for EmailJS
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
@@ -58,6 +59,7 @@ const ProjectRequest = () => {
         budget: formData.budget || "Not specified",
       };
 
+      // Send email using EmailJS
       await emailjs.send(
         'service_jt6qxw7',
         'template_xwlg5dc',
@@ -70,6 +72,7 @@ const ProjectRequest = () => {
         description: "I'll get back to you within 24-48 hours.",
       });
 
+      // Reset form on success
       setFormData({
         name: "",
         email: "",
@@ -93,48 +96,39 @@ const ProjectRequest = () => {
   };
 
   return (
-    <section id="project-request" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 relative">
-      {/* Subtle top gradient divider */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-      
+    <section id="project-request" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-12">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="relative inline-block font-handwritten text-primary">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            <span className="relative inline-block font-handwritten">
               <span className="relative z-10">Start</span>
               <svg className="absolute -bottom-2 left-0 w-full" height="16" viewBox="0 0 200 16" preserveAspectRatio="none">
-                <path 
-                  d="M0,10 Q50,4 100,10 T200,10" 
-                  stroke="hsl(250, 85%, 65%)" 
-                  strokeWidth="4" 
-                  fill="none" 
-                  className="animate-draw-line" 
-                />
+                <path d="M0,10 Q50,4 100,10 T200,10" stroke="#FC787D" strokeWidth="4" fill="none" className="animate-draw-line" />
               </svg>
             </span>{" "}
-            <span className="text-foreground">a Project</span>
+            a Project
           </h2>
           <p className="text-lg text-muted-foreground">
             Tell me about the video you want to create, and I'll get back to you with ideas and a quote.
           </p>
         </div>
 
-        <Card className="p-8 sm:p-12 bg-card border-border/50 shadow-glow glow-border">
+        <Card className="p-8 sm:p-12 shadow-medium">
           <form onSubmit={handleSubmit} className="space-y-8">
             <div className="grid sm:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <Label htmlFor="name" className="text-foreground">Name *</Label>
+                <Label htmlFor="name">Name *</Label>
                 <Input
                   id="name"
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="Enter your name"
-                  className="h-12 bg-secondary/50 border-border/50 focus:border-primary transition-colors"
+                  className="h-12"
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-foreground">Email *</Label>
+                <Label htmlFor="email">Email *</Label>
                 <Input
                   id="email"
                   type="email"
@@ -142,55 +136,46 @@ const ProjectRequest = () => {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="Enter your email"
-                  className="h-12 bg-secondary/50 border-border/50 focus:border-primary transition-colors"
+                  className="h-12"
                 />
               </div>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <Label htmlFor="whatsapp" className="text-foreground">WhatsApp Number (Optional)</Label>
+                <Label htmlFor="whatsapp">WhatsApp Number (Optional)</Label>
                 <Input
                   id="whatsapp"
                   type="tel"
                   value={formData.whatsapp}
                   onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
-                  className="h-12 bg-secondary/50 border-border/50 focus:border-primary transition-colors"
+                  className="h-12"
                   placeholder="Optional"
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="brandName" className="text-foreground">Brand / Creator Name (Optional)</Label>
+                <Label htmlFor="brandName">Brand / Creator Name (Optional)</Label>
                 <Input
                   id="brandName"
                   value={formData.brandName}
                   onChange={(e) => setFormData({ ...formData, brandName: e.target.value })}
-                  className="h-12 bg-secondary/50 border-border/50 focus:border-primary transition-colors"
+                  className="h-12"
                   placeholder="Optional"
                 />
               </div>
             </div>
 
             <div className="space-y-3">
-              <Label className="text-foreground">Project Type *</Label>
-              <div className="grid sm:grid-cols-3 gap-4">
+              <Label>Project Type *</Label>
+              <div className="grid sm:grid-cols-3 gap-3">
                 {projectTypes.map((type) => (
-                  <div 
-                    key={type} 
-                    className={`flex items-center space-x-3 p-3 rounded-lg border transition-all duration-300 cursor-pointer ${
-                      formData.projectTypes.includes(type) 
-                        ? 'border-primary bg-primary/10' 
-                        : 'border-border/50 hover:border-primary/50'
-                    }`}
-                    onClick={() => handleCheckboxChange(type)}
-                  >
+                  <div key={type} className="flex items-center space-x-2">
                     <Checkbox
                       id={type}
                       checked={formData.projectTypes.includes(type)}
                       onCheckedChange={() => handleCheckboxChange(type)}
-                      className="border-border data-[state=checked]:bg-primary data-[state=checked]:border-primary"
                     />
-                    <label htmlFor={type} className="text-sm cursor-pointer text-foreground">
+                    <label htmlFor={type} className="text-sm cursor-pointer">
                       {type}
                     </label>
                   </div>
@@ -199,25 +184,25 @@ const ProjectRequest = () => {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="description" className="text-foreground">Project Description *</Label>
+              <Label htmlFor="description">Project Description *</Label>
               <Textarea
                 id="description"
                 required
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                 placeholder="Tell me about your project goals, target audience, and vision..."
-                className="min-h-32 bg-secondary/50 border-border/50 focus:border-primary transition-colors resize-none"
+                className="min-h-32"
               />
             </div>
 
             <div className="grid sm:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <Label htmlFor="deadline" className="text-foreground">Deadline / Timeline</Label>
+                <Label htmlFor="deadline">Deadline / Timeline</Label>
                 <Select value={formData.deadline} onValueChange={(value) => setFormData({ ...formData, deadline: value })}>
-                  <SelectTrigger className="h-12 bg-secondary/50 border-border/50">
+                  <SelectTrigger className="h-12">
                     <SelectValue placeholder="Select timeline" />
                   </SelectTrigger>
-                  <SelectContent className="bg-card border-border">
+                  <SelectContent>
                     <SelectItem value="3 days">3 days</SelectItem>
                     <SelectItem value="4 days">4 days</SelectItem>
                     <SelectItem value="5 days">5 days</SelectItem>
@@ -228,12 +213,12 @@ const ProjectRequest = () => {
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="budget" className="text-foreground">Budget Range (Optional)</Label>
+                <Label htmlFor="budget">Budget Range (Optional)</Label>
                 <Select value={formData.budget} onValueChange={(value) => setFormData({ ...formData, budget: value })}>
-                  <SelectTrigger className="h-12 bg-secondary/50 border-border/50">
+                  <SelectTrigger className="h-12">
                     <SelectValue placeholder="Select budget range" />
                   </SelectTrigger>
-                  <SelectContent className="bg-card border-border">
+                  <SelectContent>
                     <SelectItem value="$500-$700">$500-$700</SelectItem>
                     <SelectItem value="$700-$1000">$700-$1000</SelectItem>
                     <SelectItem value="$1000-$1500">$1000-$1500</SelectItem>
@@ -246,7 +231,7 @@ const ProjectRequest = () => {
             <Button 
               type="submit" 
               size="lg" 
-              className="w-full bg-primary hover:bg-primary/90 group rounded-full py-6 text-base font-medium transition-all duration-300 hover:shadow-glow hover:scale-[1.02]"
+              className="w-full bg-primary hover:bg-primary/90 group"
               disabled={isSubmitting}
             >
               {isSubmitting ? (

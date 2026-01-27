@@ -7,55 +7,44 @@ const Services = () => {
       icon: Film,
       title: "Reels Editing",
       description: "Fast-paced, engaging short-form content optimized for Instagram, TikTok, and YouTube Shorts.",
-      gradient: "from-blue-500/20 to-cyan-500/20",
+      color: "text-[#1BB6F9]",
     },
     {
       icon: Megaphone,
       title: "Ad Videos",
       description: "Conversion-focused video ads that capture attention and drive results for your campaigns.",
-      gradient: "from-amber-500/20 to-orange-500/20",
+      color: "text-[#FBB130]",
     },
     {
       icon: Sparkles,
       title: "UI Animation",
       description: "Smooth, professional motion graphics and interface animations for apps and websites.",
-      gradient: "from-pink-500/20 to-rose-500/20",
+      color: "text-[#FC787D]",
     },
     {
       icon: Video,
       title: "YouTube Editing",
       description: "Long-form content editing with engaging pacing, graphics, and retention-focused storytelling.",
-      gradient: "from-emerald-500/20 to-teal-500/20",
+      color: "text-[#00DAC5]",
     },
     {
       icon: Briefcase,
       title: "Corporate Brand Videos",
       description: "Professional brand videos that communicate your message with clarity and style.",
-      gradient: "from-violet-500/20 to-purple-500/20",
+      color: "text-[#1BB6F9]",
     },
   ];
 
   return (
-    <section id="services" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 relative">
-      {/* Subtle top gradient divider */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-      
+    <section id="services" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
       <div className="container mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="text-foreground">What I</span>{" "}
-            <span className="relative inline-block font-handwritten text-primary animate-handwriting">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            What I{" "}
+            <span className="relative inline-block font-handwritten animate-handwriting">
               <span className="relative z-10">Do</span>
               <svg className="absolute -bottom-2 left-0 w-full" height="16" viewBox="0 0 200 16" preserveAspectRatio="none">
-                <path 
-                  d="M0,10 Q50,4 100,10 T200,10" 
-                  stroke="hsl(250, 85%, 65%)" 
-                  strokeWidth="4" 
-                  fill="none" 
-                  className="animate-draw-underline" 
-                  strokeDasharray="200" 
-                  strokeDashoffset="200" 
-                />
+                <path d="M0,10 Q50,4 100,10 T200,10" stroke="#1BB6F9" strokeWidth="4" fill="none" className="animate-draw-underline" strokeDasharray="200" strokeDashoffset="200" />
               </svg>
             </span>
           </h2>
@@ -68,15 +57,15 @@ const Services = () => {
           {services.map((service, index) => (
             <Card
               key={index}
-              className="p-8 bg-card border-border/50 group cursor-pointer card-hover glow-border animate-fade-in-up"
+              className="p-8 bg-background shadow-soft hover:shadow-medium transition-all duration-300 group cursor-pointer animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="mb-6">
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center group-hover:scale-110 transition-all duration-500`}>
-                  <service.icon className="w-8 h-8 text-primary" />
+              <div className="mb-4">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-light to-background flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <service.icon className={`w-7 h-7 ${service.color}`} />
                 </div>
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors duration-300">
+              <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
                 {service.title}
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>

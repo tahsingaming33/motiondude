@@ -5,6 +5,7 @@ import { useState } from "react";
 import maagnusThumbnail from "@/assets/maagnus-thumbnail.jpg";
 import stripeThumbnail from "@/assets/stripe-thumbnail.jpg";
 import mcdonaldsThumbnail from "@/assets/mcdonalds-thumbnail.jpg";
+import payoneerThumbnail from "@/assets/payoneer-thumbnail.jpg";
 import quakeslegacyThumbnail from "@/assets/quakeslegacy-thumbnail.jpg";
 import calendlyThumbnail from "@/assets/calendly-thumbnail.jpg";
 import klyraThumbnail from "@/assets/motion-thumbnail-4.png";
@@ -145,11 +146,11 @@ const Work = () => {
   ];
 
   return (
-    <section id="work" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 relative">
+    <section id="work" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="relative inline-block font-handwritten text-primary animate-handwriting">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            <span className="relative inline-block font-handwritten animate-handwriting">
               <span className="relative z-10">Selected</span>
               <svg
                 className="absolute -bottom-2 left-0 w-full"
@@ -159,7 +160,7 @@ const Work = () => {
               >
                 <path
                   d="M0,10 Q50,4 100,10 T200,10"
-                  stroke="hsl(250, 85%, 65%)"
+                  stroke="#FC787D"
                   strokeWidth="4"
                   fill="none"
                   className="animate-draw-underline"
@@ -168,7 +169,7 @@ const Work = () => {
                 />
               </svg>
             </span>{" "}
-            <span className="text-foreground">Work</span>
+            Work
           </h2>
           <p className="text-lg text-muted-foreground">
             A snapshot of the videos I've edited for brands and creators.
@@ -176,22 +177,18 @@ const Work = () => {
         </div>
 
         {/* All Categories - Layer by Layer */}
-        <div className="space-y-20">
-          {categories.map((category, catIndex) => (
-            <div 
-              key={category.name} 
-              className="space-y-8 animate-fade-in-up"
-              style={{ animationDelay: `${catIndex * 0.2}s` }}
-            >
+        <div className="space-y-16">
+          {categories.map((category) => (
+            <div key={category.name} className="space-y-6">
               {/* Category Header */}
-              <div className="flex items-center gap-4">
-                <h3 className="text-2xl sm:text-3xl font-bold text-foreground">{category.name}</h3>
-                <div className="flex-grow h-px bg-gradient-to-r from-border to-transparent"></div>
+              <div className="flex items-center gap-3">
+                <h3 className="text-2xl sm:text-3xl font-bold">{category.name}</h3>
+                <div className="flex-grow h-px bg-border"></div>
               </div>
 
               {/* Projects Grid */}
               <div
-                className={`grid gap-6 ${
+                className={`grid gap-4 ${
                   category.name === "Short form"
                     ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
                     : "sm:grid-cols-2 lg:grid-cols-3"
@@ -219,11 +216,11 @@ const Work = () => {
                             setPlayingVideo(`${category.name}-${index}`);
                           }
                         }}
-                        className="group relative overflow-hidden bg-card border-border/50 cursor-pointer card-hover glow-border"
+                        className="group relative overflow-hidden shadow-soft hover:shadow-medium transition-all duration-300 cursor-pointer animate-fade-in"
                         style={{ animationDelay: `${index * 0.1}s` }}
                       >
                         <div
-                          className={`relative bg-gradient-to-br from-muted to-card flex items-center justify-center overflow-hidden ${
+                          className={`relative bg-gradient-to-br from-purple-light to-background flex items-center justify-center ${
                             category.name === "Short form" ? "aspect-[9/16]" : "aspect-video"
                           }`}
                         >
@@ -241,40 +238,37 @@ const Work = () => {
                                 <img
                                   src={thumbnailUrl}
                                   alt={project.title}
-                                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                  className="absolute inset-0 w-full h-full object-cover"
                                   onError={(e) => {
+                                    // Fallback to default thumbnail if maxresdefault doesn't exist
                                     e.currentTarget.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
                                   }}
                                 />
                               )}
-                              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
-                              <div className="relative z-10 flex items-center justify-center w-14 h-14 rounded-full bg-primary/90 group-hover:bg-primary group-hover:scale-110 transition-all duration-300 shadow-glow">
-                                <Play className="w-6 h-6 text-primary-foreground ml-0.5" fill="currentColor" />
+                              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                              <div className="relative z-10 flex items-center justify-center w-12 h-12 rounded-full bg-primary/90 group-hover:bg-primary group-hover:scale-110 transition-all shadow-medium">
+                                <Play className="w-5 h-5 text-primary-foreground ml-0.5" fill="currentColor" />
                               </div>
                             </>
                           )}
                         </div>
 
-                        <div className="p-5">
-                          <div className="mb-3">
-                            <h3 className="font-semibold text-base mb-1 text-foreground group-hover:text-primary transition-colors duration-300">
-                              {project.title}
-                            </h3>
-                            <p className="text-sm text-muted-foreground">{project.description}</p>
-                          </div>
-
-                          <div className="flex flex-wrap gap-2">
-                            {project.tags?.map((tag: string, tagIndex: number) => (
-                              <Badge 
-                                key={tagIndex} 
-                                variant="secondary" 
-                                className="text-xs bg-secondary/50 hover:bg-secondary transition-colors"
-                              >
-                                {tag}
-                              </Badge>
-                            ))}
-                          </div>
+                      <div className="p-4">
+                        <div className="mb-2">
+                          <h3 className="font-semibold text-sm mb-1 group-hover:text-primary transition-colors">
+                            {project.title}
+                          </h3>
+                          <p className="text-xs text-muted-foreground">{project.description}</p>
                         </div>
+
+                        <div className="flex flex-wrap gap-1.5">
+                          {project.tags?.map((tag: string, tagIndex: number) => (
+                            <Badge key={tagIndex} variant="secondary" className="text-xs">
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
                       </Card>
                     );
                   })

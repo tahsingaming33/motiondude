@@ -41,26 +41,15 @@ const Testimonials = () => {
   ];
 
   return (
-    <section id="testimonials" className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden relative">
-      {/* Subtle top gradient divider */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-      
+    <section id="testimonials" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-muted/30 overflow-hidden">
       <div className="container mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="text-foreground">Client</span>{" "}
-            <span className="relative inline-block font-handwritten text-primary animate-handwriting">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            Client{" "}
+            <span className="relative inline-block font-handwritten animate-handwriting">
               <span className="relative z-10">Feedback</span>
               <svg className="absolute -bottom-2 left-0 w-full" height="16" viewBox="0 0 200 16" preserveAspectRatio="none">
-                <path 
-                  d="M0,10 Q50,4 100,10 T200,10" 
-                  stroke="hsl(250, 85%, 65%)" 
-                  strokeWidth="4" 
-                  fill="none" 
-                  className="animate-draw-underline" 
-                  strokeDasharray="200" 
-                  strokeDashoffset="200" 
-                />
+                <path d="M0,10 Q50,4 100,10 T200,10" stroke="#FBB130" strokeWidth="4" fill="none" className="animate-draw-underline" strokeDasharray="200" strokeDashoffset="200" />
               </svg>
             </span>
           </h2>
@@ -74,18 +63,19 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <Card
               key={index}
-              className="absolute overflow-hidden bg-card border-border/50 cursor-pointer group card-hover"
+              className="absolute overflow-hidden bg-background shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer group"
               style={{
                 transform: `rotate(${testimonial.rotation}deg) scale(${testimonial.scale})`,
                 animation: `float-${index % 3} 6s ease-in-out infinite`,
                 animationDelay: `${index * 0.3}s`,
+                // Scattered positioning - adjusted to prevent overlap
                 left: index === 0 ? '5%' : index === 1 ? '38%' : index === 2 ? '70%' : index === 3 ? '5%' : index === 4 ? '38%' : '70%',
                 top: index < 3 ? '0px' : '240px',
                 maxWidth: '260px',
                 borderRadius: '1rem',
               }}
             >
-              <div className="group-hover:scale-105 group-hover:-rotate-1 transition-transform duration-500">
+              <div className="group-hover:scale-105 group-hover:-rotate-1 transition-transform duration-300">
                 <img 
                   src={testimonial.image} 
                   alt={`Client feedback ${index + 1}`}
